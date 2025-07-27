@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="MSThemeCompatible" content="Yes"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--    <link rel="stylesheet" type="text/css" href="../css/sun_path_window.css">-->
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <!--    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.bundle.min.js"/>-->
+    <link rel="stylesheet" type="text/css" href="../css/slider.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/simple.js"></script>
+    <script type="text/javascript" src="../vue/vue.min.js"></script>
+    <script type="text/javascript" src="../js/sun_path_window.js"></script>
+</head>
+
+<body>
+<div class="nav pt-3 pb-3 bg-danger text-white  fw-bold justify-content-center ">
+    <h1 class="h4 fw-bold">Sunpath Manager</h1>
+</div>
+<div class="container pt-2">
+    <div id="tag-cityselector" class="form-control   ">
+        <div id="tag-cityfilter" class="setting">
+            <div class="row align-content-center g-1">
+                <div class="col-auto h5">Filter Location</div>
+                <div class="col-auto ">
+                    <input type="text" class="form-control-sm" placeholder="Please Enter City Name" id="filter"
+                           @keyup="view_list()"/>
+                </div>
+            </div>
+        </div>
+        <div id="tag-citylibrary" class=" pt-2  ">
+            <div id="library" class="form-control overflow-auto  " style="height: 228px;"></div>
+        </div>
+    </div>
+    <div id="tag-localparameter" class=" pt-2  ">
+        <div class="form-control" id="div_sun_location">
+            <div id="sun_location">
+                <div class="row align-content-center g-1">
+                    <div class="col-auto  col-2" id="north_angle">
+                        North [°]
+                    </div>
+                    <div class="col-auto col-2">
+                        <input class=" sun_info form-control-sm" type="number"
+                               style="width: 100px"
+                               min=0 max=360 step=5 v-model="northAngle"
+                               id="input_north_angle"
+                               maxlength=5
+                               readonly/>
+                    </div>
+                    <div class="col-auto col-2 " id="alitude_img">
+                        Alt. [°]
+                    </div>
+                    <div class="col-auto col-2">
+                        <input class="sun_info form-control-sm" type="text"
+                               style="width: 100px"
+                               id="sun_alitude"
+                               maxlength=5
+                               v-model="alitude"
+                               readonly>
+                    </div>
+                    <div class="col-auto col-2 " id="azimuth_img">
+                        Azi. [°]
+                    </div>
+                    <div class="col-auto col-2">
+                        <input class="sun_info form-control-sm" type="text"
+                               style="width: 100px"
+                               id="sun_azimuth"
+                               maxlength=5
+                               v-model="azimuth"
+                               readonly>
+                    </div>
+                </div>
+                <div class="row align-content-center g-1 pt-2">
+                    <div class="col-auto col-2" id="location_img">Loc. </div>
+                    <div class="col-auto col-2">
+                        <input class="sun_info form-control-sm" id="location" type="text"
+                               style="width: 100px"
+                               v-model="city"
+                        >
+                    </div>
+                    <div class="col-auto col-2" id="longitude_img">Lon. [°]</div>
+                    <div class="col-auto col-2">
+                        <input class="sun_info form-control-sm" id="longitude" type="number"
+                               style="width: 100px"
+                               v-model="longitude"
+                        >
+                    </div>
+                    <div class="col-auto col-2" id="latitude_img">Lat. [°]</div>
+                    <div class="col-auto col-2">
+                        <input class="sun_info form-control-sm" id="latitude" type="number"
+                               style="width: 100px"
+                               v-model="latitude"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tag-scaleparameter" class=" pt-2  ">
+        <div class="form-control" id="div_dom_size">
+            <div class="row ">
+                <div class="col-auto">Scale</div>
+                <div class="col-auto">
+                    <input id="dom_number" type="number" min=0.1 max=10 step=0.1 v-model="scale"
+                           @change="domeSizeChange()" @input="domeSizeChange()"
+                    />
+                    <span> x Model</span>
+                    <span class="sliders">
+                <input class="slider" id="dom_size" type="range" min=0.1 max=10 step=0.1 v-model="scale"
+                       @change="domeSizeChange()" @input="domeSizeChange()"/>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tag-datetimeparameter" class=" pt-2 pb-2  ">
+        <div class="form-control" id="time_step"></div>
+    </div>
+</div>
+
+<div id="footer" class="navbar-fixed-bottom pt-2 pb-2 text-end" >
+    <div style="background: lightgray ;height:60px" class="pt-2 pb-2 pe-2">
+        <button id="update_scene" class="btn btn-outline-danger pt-2 pb-2 text-end pe-2 " type="submit" @click="update_scene()">
+            Update Scene
+        </button>
+    </div>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#footer',
+        data: {},
+        methods: {
+            update_scene: function () {
+                window.location.href = "skp:update_scene";
+            }
+        }
+    });
+    var vm_dome_scale = new Vue({
+        el: '#div_dom_size',
+        data: {scale: 1},
+        methods: {
+            domeSizeChange: function (val) {
+                window.location.href = "skp:domeSizeChange@" + this.scale;
+            },
+        }
+    });
+    vm_local = new Vue({
+        el: '#sun_location',
+        data: {
+            northAngle: 0,
+            azimuth: 0,
+            alitude: 0,
+            longitude: 113.32,
+            latitude: 23.13,
+            city: 'Guangzhou',
+        },
+        methods: {}
+    });
+</script>
+
+</body>
+</html>
