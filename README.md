@@ -4,7 +4,7 @@ SketchUp插件，实现太阳轨迹绘制，辅助日照分析与建筑设计。
 
 ##Figure 插图
 
-<img width="534" height="394" alt="image" src="https://github.com/user-attachments/assets/89916c10-9c40-4d14-b3e5-c047a58a1e12" />
+<img width="631" height="423" alt="image" src="https://github.com/user-attachments/assets/5fc2fa1f-9fdc-4ce6-a816-c93e62b3a301" />
 
-<img width="725" height="870" alt="image" src="https://github.com/user-attachments/assets/a5629d7e-ed5d-4cda-a73e-4e83aec52bc5" />
+<img width="725" height="870" alt="image" src="https://github.com/user-attachments/assets/03c16608-7019-43d8-b7c2-07c04171be12" />
 
