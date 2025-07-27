@@ -2,7 +2,7 @@
 A SketchUp plugin to visualize and draw sun paths within your model for daylight analysis and design.
 SketchUp插件，实现太阳轨迹绘制，辅助日照分析与建筑设计。
 
-##Figure 插图
+## Figure 插图
 
 <img width="631" height="423" alt="image" src="https://github.com/user-attachments/assets/5fc2fa1f-9fdc-4ce6-a816-c93e62b3a301" />
 
