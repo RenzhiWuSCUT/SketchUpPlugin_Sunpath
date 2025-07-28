@@ -1,0 +1,124 @@
+"Garden climate analysis"="庭园气候分析";
+"Observation"="观察属性";
+"Record redline"="录入红线";
+"Record axes"="录入轴线";
+"Record entrances"="录入入口";
+"Record houses"="录入房屋";
+"Record waters"="录入水体";
+"Record grasslands"="录入草地";
+"Record corridors"="录入廊道";
+"Record trees"="录入树木";
+"Record shrub"="录入灌木";
+"Record walls"="录入墙体";
+"Record bridges"="录入桥";
+"Record rockery"="录入假山";
+
+"Record house corridors"="录入房子的出廊";
+"Record house entrances"="录入房子的出入口";
+"Record house material"="录入房子的材质";
+"Record house entrance type"="录入房子的出入口样式";
+"Record house window type"="录入房子的窗户样式";
+"Record house floors"="录入房子的楼层";
+"Record house roof type"="录入房子的屋顶样式";
+"Set analysis site"="设置分析位点";
+"Generate garden plan"="生成庭园平面";
+"Generate 3d garden"="生成立体庭园";
+"Edit hole"="编辑孔洞";
+"Generating Voronoi diagram of garden"="生成庭园的Voronoi图";
+"Detect edges causing non-manifold"="寻找造成非流型体的边";
+"Create fluid domain"="创建流体域";
+"Export data"="导出数据";
+"Open diagram"="打开模板";
+"Diagram info"="模板信息";
+"Save diagram"="保存模板";
+
+"Length"="长度"
+"Select second end"="选择第2个点"
+"Select first end"="选择第1个点"
+"Switch mode"="切换模式"
+"Mode is switched to "="模式被切换为："
+
+"Example"="示例";
+"material"="材料";
+"Refresh the ground"="刷新地面1";
+"Select a diagram."="选择一个模板。";
+"Double click to generally a plan."="双击以生成一个平面布局。";
+"Double click to generally a 3d model."="双击以生成一个立体模型。";
+"Input 1 to generate the floor, input 0 not to generate the floor."="输入1生成地板，输入0或不输入则不生成地板。";
+"Observe redline"="观察红线";
+"Observe grassland"="观察草地";
+"Observe water"="观察水体";
+"Observe corridor"="观察廊道";
+"Observe axes"="观察轴线";
+"Observe entrances"="观察出入口";
+"Observe houses"="观察房屋";
+"Wood structure"="木结构";
+"Masonry structure"="砖石结构";
+"Brick and wood structure"="砖木结构";
+"Plank door"="板门";
+"Frame door"="扇门";
+"Open entrance"="敞口";
+"Intermediate"="中间式";
+"Fully open"="全敞式";
+"Frame window"="扇窗";
+"Manchuria window"="满洲窗";
+"Single window"="独窗";
+"Row of windows"="排窗";
+"Enclosed"="围合式";
+"Permeable"="通透式";
+
+"High wall"="高墙";
+"Low wall"="矮墙";
+"Draw "="绘制";
+"High bridge"="高桥";
+"Low bridge"="矮桥";
+
+"Standard Mode(Rectangle Mode)"="标准模式（矩形模式）";
+"Mirror Mode"="镜像模式";
+"Free Mode"="自由模式";
+"Regular polygon mode"="正多边形模式";
+
+"paths"="路径";
+"radius"="半径";
+"type"="类型";
+"strc"="结构";
+"Control_points"="控制点数";
+"transmit"="透过率";
+
+"Diagram gallary"="图库";
+"Diagram info"="图示信息";
+
+"Double click to clear the existing entrance"="双击以清除现有入口";
+"Double click to set first entrance"="双击以设置第一个入口";
+"Double click to set second entrance"="双击以设置第二个入口";
+"Clear the existing entrance"="清掉原有的出入口";
+"Clear the existing entrance, and add a new entrance"="清掉原有的出入口,并添加新的出入口";
+"Cannot set entrances"="无法绘制出入口";
+
+
+"The selected object is not a solid"="选中的物体不是实体!";
+"The selected object is a non-manifold"="选中的物体是一个非流型体";
+"Please select an solid group or component"="请选择一个实体的组或组件";
+"Please select an group or component"="请选择一个组或组件";
+"The selected object is already a solid"="所选的物体已经是实体";
+
+"Cuboid|Octagonal prism"="长方体|八棱柱";
+"Cuboid"="长方体";
+"Octagonal prism"="八棱柱";
+"Fluid domain setting"="设置流体域";
+"Set the type of fluid domain"="设置流体域的类型";
+"Set fluid domain angle [0 ~ 360(deg)]"="设置流体域角度 [0 ~ 360(deg)]";
+
+"Angle out of range"="角度超出取值范围！";
+"Please select one of the faces of the cuboid hole."="请选择长方体孔洞的其中一个面。";
+
+
+"Input 1 to draw a preview of all trees."="输入“1”表示：绘制所有树的预览。";
+
+"Find #{@nmedge.size} edges that cause \"non-manifold\" in total.\nPress the space bar to exit."="共找到#{@nmedge.size}条造成“非流型体”的边。按空格键退出。";
+
+
+
+
+
+
