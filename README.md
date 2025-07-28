@@ -5,6 +5,7 @@ SketchUp插件，实现太阳轨迹绘制，辅助日照分析与建筑设计。
 ## Installation Instructions 安装方法
 
 Please place the following four files or folders into the SketchUp Plugins folder at the same time: rzw_Lib2 rzw_Lib2.rb rzw_sunpath rzw_sunpath.rb
+
 请将以下四个文件或文件夹同时放入 SketchUp 的 Plugins 文件夹中：rzw_Lib2 rzw_Lib2.rb rzw_sunpath rzw_sunpath.rb
 
 ## Figure 插图
