@@ -84758,5 +84758,13 @@
     "Latitude": 63.110335,
     "Longitude": 7.728079,
     "Altitude": 40.26
+  },
+  {
+  "ID": 999999,
+  "Country": "Singapore",
+  "City": "Singapore",
+  "Latitude": 1.28967,
+  "Longitude": 103.85007,
+  "Altitude": 15
   }
 ]
