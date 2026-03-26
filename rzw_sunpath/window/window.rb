@@ -24,6 +24,26 @@ module SuperCat
         window.add_action_callback("ready") { block.call }
       end
 
+      def callback_dlg(window, function, &block)
+        window.add_action_callback("callback_json") { |dialog, token|
+          token_splited = token2data(token, nil)
+          f = token_splited[0]
+          if function == f
+            if token_splited.size > 1
+              d = token_splited[1..-1].map { |str|
+                hash = JSON.parse(str)
+                # Hash[hash.keys[0].to_sym =>hash.values[0] ]
+              }
+            else
+              d = ''
+            end
+            block.call(d)
+          end
+          Sketchup.active_model.active_view.invalidate
+        }
+      end
+
+
       def token2data(token, method = :to_i)
         return [] if token.nil?
 
