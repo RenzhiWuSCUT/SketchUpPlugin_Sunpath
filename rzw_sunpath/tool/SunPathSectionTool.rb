@@ -100,8 +100,8 @@ module SuperCat
       def draw(view)
         @ip.draw(view)
         view.line_width = 3
-        view.draw_points([ip2pt(@ip)], 10, 4, CLR_C:: OPT_PREVIEW_COLOR)
-        view.draw_points(@path, 10, 4, CLR_C::  OPT_SELECTED_COLOR) if @path.size > 0
+        view.draw_points([ip2pt(@ip)], 10, 4, OPT_PREVIEW_COLOR)
+        view.draw_points(@path, 10, 4, OPT_SELECTED_COLOR) if @path.size > 0
         # view.invalidate
       end
 
