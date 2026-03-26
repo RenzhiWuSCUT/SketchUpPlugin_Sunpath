@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="MSThemeCompatible" content="Yes"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sunpath Manager</title>
+
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/slider.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/sun_path_window.css"/>
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/simple.js"></script>
+    <script type="text/javascript" src="../vue/vue.min.js"></script>
+</head>
+
+<body>
+<div class="shell">
+    <div class="header">
+        <div class="header-title">Sunpath Manager</div>
+        <div class="header-subtitle">太阳路径参数控制面板</div>
+    </div>
+
+    <div class="main-grid">
+        <!-- 左侧：城市筛选 -->
+        <div class="panel panel-city">
+            <h3 class="panel-title">位置库</h3>
+
+            <div id="tag-cityselector">
+                <div id="tag-cityfilter" class="filter-wrap">
+                    <label class="filter-label" for="filter">Filter</label>
+                    <input type="text"
+                           class="filter-input"
+                           placeholder="Please Enter City Name"
+                           id="filter"/>
+                </div>
+
+                <div id="tag-citylibrary" class="city-library-wrap">
+                    <div id="library" class="city-library"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧 -->
+        <div class="right-col">
+            <!-- 太阳与位置参数 -->
+            <div id="tag-localparameter" class="panel">
+                <h3 class="panel-title">位置参数</h3>
+
+                <div class="form-card" id="div_sun_location">
+                    <div id="sun_location">
+                        <div class="info-grid three-cols">
+                            <div class="field">
+                                <div class="field-label icon-north" id="north_angle">North [°]</div>
+                                <input class="sun_info field-input"
+                                       type="number"
+                                       min="0"
+                                       max="360"
+                                       step="5"
+                                       v-model="northAngle"
+                                       id="input_north_angle"
+                                       maxlength="5"
+                                       readonly/>
+                            </div>
+
+                            <div class="field">
+                                <div class="field-label icon-alt" id="alitude_img">Alt. [°]</div>
+                                <input class="sun_info field-input"
+                                       type="text"
+                                       id="sun_alitude"
+                                       maxlength="5"
+                                       v-model="alitude"
+                                       readonly/>
+                            </div>
+
+                            <div class="field">
+                                <div class="field-label icon-azi" id="azimuth_img">Azi. [°]</div>
+                                <input class="sun_info field-input"
+                                       type="text"
+                                       id="sun_azimuth"
+                                       maxlength="5"
+                                       v-model="azimuth"
+                                       readonly/>
+                            </div>
+                        </div>
+
+                        <div class="info-grid three-cols second-row">
+                            <div class="field">
+                                <div class="field-label" id="location_img">Loc.</div>
+                                <input class="sun_info field-input"
+                                       id="location"
+                                       type="text"
+                                       v-model="city"/>
+                            </div>
+
+                            <div class="field">
+                                <div class="field-label" id="longitude_img">Lon. [°]</div>
+                                <input class="sun_info field-input"
+                                       id="longitude"
+                                       type="number"
+                                       v-model="longitude"/>
+                            </div>
+
+                            <div class="field">
+                                <div class="field-label" id="latitude_img">Lat. [°]</div>
+                                <input class="sun_info field-input"
+                                       id="latitude"
+                                       type="number"
+                                       v-model="latitude"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 穹顶尺度 -->
+            <div id="tag-scaleparameter" class="panel">
+                <h3 class="panel-title">穹顶尺度</h3>
+
+                <div class="form-card" id="div_dom_size">
+                    <div class="scale-row">
+                        <div class="scale-label">Scale</div>
+
+                        <div class="scale-main">
+                            <div class="scale-topline">
+                                <input id="dom_number"
+                                       class="scale-number"
+                                       type="number"
+                                       min="0.1"
+                                       max="10"
+                                       step="0.1"
+                                       v-model="scale"
+                                       @change="domeSizeChange()"
+                                       @input="domeSizeChange()"/>
+                                <span class="scale-unit">x Model</span>
+                            </div>
+
+                            <div class="sliders">
+                                <input class="slider"
+                                       id="dom_size"
+                                       type="range"
+                                       min="0.1"
+                                       max="10"
+                                       step="0.1"
+                                       v-model="scale"
+                                       @change="domeSizeChange()"
+                                       @input="domeSizeChange()"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 时间设置 -->
+            <div id="tag-datetimeparameter" class="panel">
+                <h3 class="panel-title">时间设置</h3>
+
+                <div class="form-card">
+                    <div class="time-tip">以下时间控件仍由原有脚本动态生成，接口不变。</div>
+                    <div class="time-panel" id="time_step"></div>
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div id="footer" class="panel footer-panel">
+                <div class="footer-inner">
+                    <button id="update_scene"
+                            class="btn-primary"
+                            type="button"
+                            @click="update_scene()">
+                        Update Scene
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var vm_dome_scale = new Vue({
+        el: '#div_dom_size',
+        data: {
+            scale: 1
+        },
+        methods: {
+            domeSizeChange: function () {
+                sketchup.domeSizeChange(Number(this.scale));
+            }
+        }
+    });
+
+    var vm_local = new Vue({
+        el: '#sun_location',
+        data: {
+            northAngle: 0,
+            azimuth: 0,
+            alitude: 0,
+            longitude: 113.32,
+            latitude: 23.13,
+            city: 'Guangzhou'
+        }
+    });
+
+    new Vue({
+        el: '#footer',
+        methods: {
+            update_scene: function () {
+                sketchup.update_scene();
+            }
+        }
+    });
+</script>
+
+<script type="text/javascript" src="../js/sun_path_window.js"></script>
+</body>
+</html>

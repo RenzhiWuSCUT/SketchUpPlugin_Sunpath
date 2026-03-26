@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun Path Section</title>
+  <link rel="stylesheet" href="../css/sun_path_section_window.css" />
+</head>
+<body>
+<div class="shell">
+  <div class="header">
+    <div class="header-title">Sunpath Section</div>
+    <div class="header-subtitle">剖面太阳路径参数面板</div>
+  </div>
+
+  <div class="main-grid">
+    <div class="panel panel-city">
+      <h3 class="panel-title">位置库</h3>
+
+      <div class="filter-wrap">
+        <label class="filter-label" for="cityFilterInput">Filter</label>
+        <input
+                id="cityFilterInput"
+                class="filter-input"
+                type="text"
+                placeholder="输入城市名进行筛选"
+        />
+      </div>
+
+      <div id="cityLibrary" class="city-library"></div>
+
+      <div class="muted">点击城市按钮后会自动更新位置并刷新场景。</div>
+    </div>
+
+    <div class="right-col">
+      <div class="panel">
+        <h3 class="panel-title">时间设置</h3>
+
+        <div class="control-group">
+          <div class="label">月份</div>
+          <input id="monthRange" type="range" min="1" max="12" step="1" value="3" />
+          <div id="monthValue" class="value-box">3月</div>
+        </div>
+
+        <div class="control-group">
+          <div class="label">日期</div>
+          <input id="dayRange" type="range" min="1" max="31" step="1" value="26" />
+          <div id="dayValue" class="value-box">26日</div>
+        </div>
+
+        <div class="muted">拖动月、日滑条后会实时更新SketchUp场景。</div>
+      </div>
+
+      <div class="panel">
+        <h3 class="panel-title">穹顶尺度</h3>
+
+        <div class="control-group">
+          <div class="label">Scale</div>
+          <input id="domeScale" type="range" min="1" max="20" step="1" value="5" />
+          <div id="domeScaleText" class="value-box">5</div>
+        </div>
+
+        <div class="muted">拖动尺度滑条后会实时更新SketchUp场景。</div>
+      </div>
+
+      <div class="panel">
+        <h3 class="panel-title">位置参数</h3>
+
+        <div class="row">
+          <div class="label-inline">当前城市</div>
+          <div id="cityNameText" class="info-inline">-</div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-label">经度</div>
+          <div id="lonText" class="info-value">-</div>
+
+          <div class="info-label">纬度</div>
+          <div id="latText" class="info-value">-</div>
+        </div>
+      </div>
+
+      <div class="panel footer-panel">
+        <div class="footer">
+          <button id="btnUpdateScene" class="btn-primary" type="button">更新场景</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 兼容旧Ruby初始化逻辑 -->
+<select id="monthSelect" class="hidden-legacy"></select>
+<select id="daySelect" class="hidden-legacy"></select>
+<select id="hourSelect" class="hidden-legacy"></select>
+<select id="citySelect" class="hidden-legacy"></select>
+
+<script src="../js/sun_path_section_window.js"></script>
+</body>
+</html>
